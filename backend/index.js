@@ -222,7 +222,7 @@ app.get('/eventi/organizzatore/:username',  async (req, res) => {
         });
     }
 });
-app.post('/nuovo-evento', authenticateToken, async (req, res) => {
+app.post('/nuovo-evento', async (req, res) => {
     try {
         const { data, descrizione, luogo, orafine, organizzatore, prezzo, titolo, copertina, immagini, tags, tipologia } = req.body;
         
