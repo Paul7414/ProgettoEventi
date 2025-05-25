@@ -1,4 +1,5 @@
 <script>
+  import { API_URL } from '$lib/config';
   import CardEvento from '$lib/CardEvento.svelte';
   import BottoniHome from '$lib/BottoniHome.svelte';
   
@@ -16,7 +17,7 @@
       if (filtroSelezionato === 'tutti') {
         eventiFiltrati = data.eventi;
       } else {
-        const res = await fetch(`http://localhost:3000/eventi/${filtroSelezionato}`);
+        const res = await fetch(`${API_URL}/eventi/${filtroSelezionato}`);
         eventiFiltrati = await res.json();
       }
     } catch (error) {
