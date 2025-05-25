@@ -1,4 +1,5 @@
 <script>
+  import { API_URL } from '$lib/config';
   export let evento;
   import { goto } from '$app/navigation';
   import { eventoSelezionato } from '$lib/stores';
@@ -19,7 +20,7 @@
   async function eliminaEvento(titolo) {
     try {
         
-        const response = await fetch(`http://localhost:3000/eventi/${evento.titolo}/${evento.descrizione}`, {
+        const response = await fetch(`${API_URL}/eventi/${evento.titolo}/${evento.descrizione}`, {
             method: 'DELETE'
         });
         

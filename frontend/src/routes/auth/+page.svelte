@@ -1,5 +1,6 @@
 <script>
   import { authStore } from '$lib/authStore';
+  import { API_URL } from '$lib/config';
   import { goto } from '$app/navigation';
 
   let isLogin = true;
@@ -14,7 +15,7 @@
 
     try {
       const endpoint = isLogin ? 'login' : 'register';
-      const response = await fetch(`http://localhost:3000/auth/${endpoint}`, {
+      const response = await fetch(`${API_URL}/auth/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

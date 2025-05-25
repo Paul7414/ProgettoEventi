@@ -1,4 +1,5 @@
 <script>
+  import { API_URL } from '$lib/config';
   import { authStore } from '$lib/authStore';
   import { goto } from '$app/navigation';
   

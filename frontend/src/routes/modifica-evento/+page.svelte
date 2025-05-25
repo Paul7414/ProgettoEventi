@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { API_URL } from '$lib/config';
   import { goto } from '$app/navigation';
   import { authStore, eventoSelezionato } from '$lib/stores'; // Assicurati di importare lo store
   
@@ -50,7 +51,7 @@
 
   async function caricaDettagliEvento(titolo, descrizione) {
     try {
-      const response = await fetch(`http://localhost:3000/eventi/${encodeURIComponent(titolo)}/${encodeURIComponent(descrizione)}`);
+      const response = await fetch(`${API_URL}/eventi/${encodeURIComponent(titolo)}/${encodeURIComponent(descrizione)}`);
       
       if (!response.ok) {
         throw new Error('Evento non trovato');
@@ -104,7 +105,7 @@
       const formData = new FormData();
       formData.append('image', file);
 
-      const response = await fetch('http://localhost:3000/upload', {
+      const response = await fetch(`${API_URL}/upload`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -159,7 +160,7 @@
       
       // Elimina l'immagine dal server solo se non è l'immagine originale
       if (!imageUrl.includes('original')) {
-        const response = await fetch(`http://localhost:3000/upload/${filename}`, {
+        const response = await fetch(`${API_URL}/upload/${filename}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -193,7 +194,7 @@
   error = null;
 
   try {
-    const response = await fetch(`http://localhost:3000/eventi/${id}`, {
+    const response = await fetch(`${API_URL}/eventi/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

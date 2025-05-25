@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-
+import { API_URL } from '$lib/config';
 // Creo lo store base
 const createAuthStore = () => {
     const { subscribe, set } = writable({

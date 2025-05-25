@@ -1,4 +1,5 @@
 <script>
+  import { API_URL } from '$lib/config';
   import { goto } from '$app/navigation';
   import { authStore } from '$lib/authStore';
 
@@ -44,7 +45,7 @@
       const formData = new FormData();
       formData.append('image', file);
 
-      const response = await fetch('http://localhost:3000/upload', {
+      const response = await fetch(`${API_URL}/upload`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -98,7 +99,7 @@
       const filename = imageUrl.split('/').pop();
       
       // Elimina l'immagine dal server
-      const response = await fetch(`http://localhost:3000/upload/${filename}`, {
+      const response = await fetch(`${API_URL}/upload/${filename}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -143,7 +144,7 @@
         organizzatore: $authStore.user.username
       };
 
-      const response = await fetch('http://localhost:3000/nuovo-evento', {
+      const response = await fetch('${API_URL}/nuovo-evento', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

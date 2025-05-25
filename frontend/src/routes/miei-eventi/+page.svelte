@@ -1,5 +1,6 @@
 <script>
   import CardUtente from '$lib/CardUtente.svelte';
+  import { API_URL } from '$lib/config';
   import { onMount } from 'svelte';
   import { authStore } from '$lib/authStore';
   
@@ -16,7 +17,7 @@
     
     try {
 
-      const res = await fetch(`http://localhost:3000/eventi/organizzatore/${$authStore.user.username}`);
+      const res = await fetch(`${API_URL}/eventi/organizzatore/${$authStore.user.username}`);
       if (!res.ok) throw new Error('Errore nel caricamento degli eventi');
       eventiOrganizzatore = await res.json();
     } catch (err) {
