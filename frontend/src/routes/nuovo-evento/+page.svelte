@@ -144,7 +144,7 @@
         organizzatore: $authStore.user.username
       };
 
-      const response = await fetch('${API_URL}/nuovo-evento', {
+      const response = await fetch(`${API_URL}/nuovo-evento`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
